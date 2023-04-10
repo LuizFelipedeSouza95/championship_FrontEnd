@@ -38,8 +38,8 @@ export default function Classification({ classification }: HomeProps) {
                 <title>Campeonato - Classificação</title>
             </Head>
 
-            <div>
-                <Header />
+            <Header />
+            <div className={style.bodyRounds}>
 
                 <main className={style.container}>
 

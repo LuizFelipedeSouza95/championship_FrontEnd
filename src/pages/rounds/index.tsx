@@ -7,8 +7,9 @@ import { setupAPIClient } from '@/src/services/api';
 import { canSSRAuth } from '@/src/utils/canSSRAuth';
 import { faFloppyDisk } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { log } from 'console';
 
-type ClassificationProps = {
+type RoundsProps = {
     id: string;
     roundNumber: number;
     homePlayer_id: string;
@@ -21,122 +22,83 @@ type ClassificationProps = {
 }
 
 interface HomeProps {
-    rounds: ClassificationProps[];
+    rounds: RoundsProps[];
 }
 
 export default function Classification({ rounds }: HomeProps) {
+    const [roundsList, setRoundsList] = useState(rounds || []);
 
-    const [roundsList, setRoundsList] = useState(rounds || [])
+    // Agrupa os itens por número da rodada
+    const roundsMap = new Map<number, Array<any>>();
+    roundsList.forEach((item) => {
+        const roundNumber = item.roundNumber;
+        const roundItems = roundsMap.get(roundNumber) || [];
+        roundItems.push(item);
+        roundsMap.set(roundNumber, roundItems);
+    });
+
+    // Converte o mapa de rodadas em uma lista de componentes
+    const roundsListComponents = Array.from(roundsMap.entries()).map(
+        ([roundNumber, roundItems]) => {
+            const roundTitle = `Rodada ${roundNumber}`;
+            const roundItemsComponents = roundItems.map((item) => {
+                return (
+                    <div key={item.id} className={style.game}>
+                        <div className={style.luiz}>{item.homePlayer}</div>
+                        <input
+                            type="text"
+                            value={item.scoreHome}
+                        /* onChange={(e) => setScoreHome(e.target.value)} */
+                        />
+                        <div className={style.felipe}>{item.visitingPlayers}</div>
+                        <input
+                            type="text"
+                            value={item.scoreVisiting}
+                        /* onChange={(e) => setScoreVisiting(e.target.value)} */
+                        />
+                        <div className={style.salvar}>Salvar</div>
+                    </div>
+                );
+            });
+            return (
+                <section key={roundNumber} className={style.section}>
+                    <h2>{roundTitle}</h2>
+                    <div className={style.grid}>{roundItemsComponents}</div>
+                </section>
+            );
+        }
+    );
 
     return (
         <>
-
             <Head>
-                <title>Campeonato - Classificação</title>
+                <title>Campeonato - Rodadas</title>
             </Head>
 
-            <div>
-                <Header />
+            <Header />
+
+            <div className={style.bodyRounds}>
+
+
+                <h1 className={style.titlePage}>Rodadas</h1>
 
                 <main className={style.container}>
 
-                    <form className={style.main}>
-                        <h2>Rodada 1 de 38</h2>
-                        <div className={style.grid}>
-
-                            <div className={style.teste}>
-                                <div className={style.flex}>
-                                    <h5>Time Mandante</h5>
-                                    <h3>palmeiras</h3>
-                                    <hr />
-                                    <h5>Time Visitante</h5>
-                                    <h3>santos</h3>
-                                </div>
-
-                                <div>
-                                    <div className={style.salvar}>palmeiras</div>
-                                </div>
-                            </div>
-
-
-                            <div className={style.teste}>
-                                teste
-                            </div>
-
-                            <div className={style.teste}>
-                                teste
-                            </div>
-
-                            <div className={style.teste}>
-                                teste
-                            </div>
-
-                            <div className={style.teste}>
-                                teste
-                            </div>
-
-                            <div className={style.teste}>
-                                teste
-                            </div>
-                            <div className={style.teste}>
-                                teste
-                            </div>
-                            <div className={style.teste}>
-                                teste
-                            </div>
-                            <div className={style.teste}>
-                                teste
-                            </div>
-                            <div className={style.teste}>
-                                teste
-                            </div>
-                        </div>
-
-                    </form>
-
-                    {/*                     <div className={style.containerTable}>
-                        <table className={style.table} id="tableClassification">
-                            <thead className={style.titleTable}>
-                                <tr>
-                                    <th className={style.titleTableCell}>Rodada</th>
-                                    <th className={style.titleTableCell}>Player Mandante</th>
-                                    <th className={style.titleTableCell}>Placar Mandante</th>
-                                    <th className={style.titleTableCell}>X</th>
-                                    <th className={style.titleTableCell}>Placar Visitante</th>
-                                    <th className={style.titleTableCell}>Player Visitante</th>
-                                    <th className={style.titleTableCell}>Acão</th>
-                                </tr>
-                            </thead>
-                            <tbody className={style.tableBody}>
-                                {roundsList.map(item => (
-                                    <tr>
-                                        <td className={style.body_td_round}>{item.roundNumber}</td>
-                                        <td className={style.body_td}>{item.homePlayer}</td>
-                                        <td className={style.body_td}>{item.scoreHome}</td>
-                                        <td className={style.body_td}>X</td>
-                                        <td className={style.body_td}>{item.scoreVisiting}</td>
-                                        <td className={style.body_td}>{item.visitingPlayers}</td>
-                                        <td className={style.body_td}><button className={style.buttonSave} type='button'><FontAwesomeIcon icon={faFloppyDisk} /></button></td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    </div> */}
-
+                    <form className={style.grid}>{roundsListComponents}</form>
                 </main>
-            </div>
 
+            </div>
         </>
-    )
+    );
 }
+
+
+
 
 export const getServerSideProps = canSSRAuth(async (ctx: any) => {
     const apliClient = setupAPIClient(ctx)
 
     const response = await apliClient.get('/round');
-
-    console.log(response.data);
-
 
     return {
         props: {

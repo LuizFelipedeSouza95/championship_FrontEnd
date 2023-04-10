@@ -25,3 +25,22 @@ export function Button({ loading, children, ...rest }: ButtonProps) {
         </button>
     )
 }
+
+export function ButtonSaveRound({ loading, children, ...rest }: ButtonProps) {
+    return (
+
+        <button
+            className={styles.buttonSaveRound}
+            disabled={loading}
+            {...rest}
+        >
+            {loading ? (
+                <FaSpinner color="#FFF" size={16} />
+            ) : (
+                <a className={styles.buttonText}>
+                    {children}
+                </a>
+            )}
+        </button>
+    )
+}

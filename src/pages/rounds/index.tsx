@@ -2,6 +2,8 @@ import { useState, FormEvent } from 'react';
 import Head from "next/head";
 import { Header } from '../../components/Header'
 import style from './style.module.scss';
+import { InputRounds } from "../../components/ui/input";
+import { ButtonSaveRound } from "../../components/ui/Button";
 import { toast, Zoom } from 'react-toastify';
 import { setupAPIClient } from '@/src/services/api';
 import { canSSRAuth } from '@/src/utils/canSSRAuth';
@@ -43,21 +45,38 @@ export default function Classification({ rounds }: HomeProps) {
             const roundTitle = `Rodada ${roundNumber}`;
             const roundItemsComponents = roundItems.map((item) => {
                 return (
-                    <div key={item.id} className={style.game}>
-                        <div className={style.luiz}>{item.homePlayer}</div>
-                        <input
-                            type="text"
-                            value={item.scoreHome}
-                        /* onChange={(e) => setScoreHome(e.target.value)} */
-                        />
-                        <div className={style.felipe}>{item.visitingPlayers}</div>
-                        <input
-                            type="text"
-                            value={item.scoreVisiting}
-                        /* onChange={(e) => setScoreVisiting(e.target.value)} */
-                        />
-                        <div className={style.salvar}>Salvar</div>
-                    </div>
+
+                    <section key={item.id} className={style.game}>
+
+                        <div className={style.dadosRounds}>
+                            <div className={style.roundGame}>
+                                <label>{item.homePlayer}</label>
+                                <InputRounds
+                                    type="text"
+                                    value={item.scoreHome}
+                                />
+                            </div>
+                            <div className={style.roundGame}>
+                                <label>{item.visitingPlayers}</label>
+                                <InputRounds
+                                    type="text"
+                                    value={item.scoreVisiting}
+                                />
+                            </div>
+                        </div>
+
+                        <div className={style.buttonMain}>
+                            <button
+                                className={style.buttonSaveRound}
+                                type="submit"
+                            //loading={loading}
+                            >
+                                Salvar
+                            </button>
+                        </div>
+
+                    </section>
+
                 );
             });
             return (
@@ -84,7 +103,7 @@ export default function Classification({ rounds }: HomeProps) {
 
                 <main className={style.container}>
 
-                    <form className={style.grid}>{roundsListComponents}</form>
+                    <section className={style.grid}>{roundsListComponents}</section>
                 </main>
 
             </div>

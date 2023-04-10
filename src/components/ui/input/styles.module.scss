@@ -12,3 +12,19 @@
 .input::placeholder{
     color: rgba(255,255,255, 0.8);
 }
+
+.inputRounds{
+    width: 70px;
+    margin-bottom: 1rem;
+    //font: bold;
+    //margin-top: 1rem;
+    height: 20px;
+    border:0;
+    border-radius: 0.5rem;
+    background-color: var(--secondary-color);
+    color: var(--dark-900);
+    padding: 1rem;
+    border: 1px solid var(--dark-900);
+    justify-content: center;
+    align-items: center;
+}

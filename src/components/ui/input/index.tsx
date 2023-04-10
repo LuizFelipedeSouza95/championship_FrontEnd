@@ -19,3 +19,9 @@ export function TextArea({...rest}: TextAreaProps){
     <textarea className={styles.input} {...rest}></textarea>
   )
 }
+
+export function InputRounds({...rest}: InputProps){
+  return(
+    <input className={styles.inputRounds} {...rest} />
+  )
+}

@@ -39,9 +39,9 @@ export default function Classification({ classification }: HomeProps) {
             </Head>
 
             <Header />
-            <div className={style.bodyRounds}>
+            <main className={style.containerMain}>
 
-                <main className={style.container}>
+                <section className={style.container}>
 
                     <h1>Classificação</h1>
 
@@ -49,6 +49,7 @@ export default function Classification({ classification }: HomeProps) {
                         <table className={style.table} id="tableClassification">
                             <thead className={style.titleTable}>
                                 <tr>
+                                <th className={style.titleTableCell}>Posição</th>
                                     <th className={style.titleTableCell}>Time</th>
                                     <th className={style.titleTableCell}>Jogador</th>
                                     <th className={style.titleTableCell}>P</th>
@@ -61,8 +62,9 @@ export default function Classification({ classification }: HomeProps) {
                                 </tr>
                             </thead>
                             <tbody className={style.tableBody}>
-                                {classificationList.map(item => (
+                                {classificationList.map((item, index) => (
                                     <tr>
+                                        <td className={style.body_td}>{index + 1}</td>
                                         <td className={style.body_td}>{item.team_name}</td>
                                         <td className={style.body_td}>{item.namePlayer}</td>
                                         <td className={style.body_td}>{item.P}</td>
@@ -78,8 +80,8 @@ export default function Classification({ classification }: HomeProps) {
                         </table>
                     </div>
 
-                </main>
-            </div>
+                </section>
+            </main>
 
         </>
     )

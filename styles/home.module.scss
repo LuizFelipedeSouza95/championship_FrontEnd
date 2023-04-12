@@ -1,4 +1,4 @@
-.containerCenter {
+.containerMain {
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -37,6 +37,10 @@
     margin-top: 1rem;
     color: var(--white);
     cursor: pointer;
+}
+
+.labelTeam{
+    color: white;
 }
 
 @media (max-width: 620px) {

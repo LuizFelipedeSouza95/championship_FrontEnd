@@ -46,7 +46,7 @@ export default function Classification({ rounds }: HomeProps) {
             const roundItemsComponents = roundItems.map((item) => {
                 return (
 
-                    <section key={item.id} className={style.game}>
+                    <div key={item.id} className={style.game}>
 
                         <div className={style.dadosRounds}>
                             <div className={style.roundGame}>
@@ -63,19 +63,17 @@ export default function Classification({ rounds }: HomeProps) {
                                     value={item.scoreVisiting}
                                 />
                             </div>
+                            <div className={style.buttonMain}>
+                                <ButtonSaveRound
+                                    //className={style.buttonSaveRound}
+                                    type="submit"
+                                >
+                                    Salvar
+                                </ButtonSaveRound>
+                            </div>
                         </div>
 
-                        <div className={style.buttonMain}>
-                            <button
-                                className={style.buttonSaveRound}
-                                type="submit"
-                            //loading={loading}
-                            >
-                                Salvar
-                            </button>
-                        </div>
-
-                    </section>
+                    </div>
 
                 );
             });
@@ -96,17 +94,10 @@ export default function Classification({ rounds }: HomeProps) {
 
             <Header />
 
-            <div className={style.bodyRounds}>
-
-
-                <h1 className={style.titlePage}>Rodadas</h1>
-
-                <main className={style.container}>
-
-                    <section className={style.grid}>{roundsListComponents}</section>
-                </main>
-
-            </div>
+            <main className={style.containerMain}>
+                <h1>Rodadas</h1>
+                <section className={style.grid}>{roundsListComponents}</section>
+            </main>
         </>
     );
 }

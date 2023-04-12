@@ -51,7 +51,7 @@ export default function Home() {
       <Head>
         <title>Sujeito Pizza - Faça seu login</title>
       </Head>
-      <div className={styles.containerCenter}>
+      <main className={styles.containerMain}>
         {/* <Image src={logoImg} alt="Logo Sujeito Pizzaria" priority /> */}
 
         <div className={styles.login}>
@@ -87,7 +87,7 @@ export default function Home() {
 
         </div>
 
-      </div>
+      </main>
     </>
   )
 }

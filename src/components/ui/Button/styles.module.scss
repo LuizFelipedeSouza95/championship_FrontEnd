@@ -1,4 +1,5 @@
 .button {
+    margin-top: 1rem;
     max-width: 600px;
     background-color: var(--blue);
     border: 0;
@@ -23,14 +24,17 @@
 .buttonText::placeholder {
     color: var(--white)
 }
+
 .buttonSaveRound{
-    max-width: 50px;
+    width: 100px;
+    height: 40px;
     background-color: var(--blue);
+    align-items: center;
+    justify-content: center;
     border: 0;
-    padding: 0.4rem;
     color: var(--white);
     border-radius: 0.5rem;
-    transition: filter 0.2s;
+    transition: transform 0.8s;
 
     &[disabled] {
         cursor: not-allowed;
@@ -41,9 +45,11 @@
     }
 
     &:hover {
-        filter: brightness(1.08)
+        filter: brightness(1.08);
+        transform: scale(1.1);
     }
 }
+
 @keyframes animate {
     from {
         transform: rotate(0deg);

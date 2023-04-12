@@ -1,504 +1,62 @@
-.titlePage {
-    color: var(--white);
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-
-.bodyRounds {
+.containerMain {
     margin-top: 8rem;
-}
 
-.container {
-    top: 10px;
-    max-width: 700px;
-    //height: 5rem;
-    margin: 6rem;
-    //padding: 0 2rem;
-    //display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.grid {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(5, minmax(0, 1fr));
-    gap: 5px;
-
-    h2 {
+    h1 {
         color: var(--white);
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: center;
-        margin-bottom: 0.5rem;
-    }
-}
-
-
-.game {
-    display: flex;
-    grid-template-columns: 1fr;
-    //gap: 1px;
-    align-items: center;
-    //display: block;
-    width: 325px;
-    height: 110px;
-    background: var(--gray-100);
-    //align-items: center;
-    justify-content: center;
-    //opacity: 60%;
-    //color: var(--dark-900)
-    padding: 1rem;
-}
-
-.dadosRounds {
-    width: 200px;
-}
-
-.roundGame {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    label {
-        align-items: center;
-        justify-content: center;
+        margin-bottom: 2rem;
     }
 }
 
 .section {
-    align-items: center;
-    justify-content: center;
     border-radius: 1;
     border: 1px solid var(--white);
-    padding: 5px;
 }
 
-.buttonSaveRound {
-    width: 70px;
-    //max-width: 50px;
-    margin-left: 2rem;
-    background-color: var(--blue);
-    border: 0;
-    padding: 0.7rem;
-    color: var(--white);
-    border-radius: 0.5rem;
-    transition: transform 0.8s;
+.grid {
+    display: grid;
+    padding: 1.5rem;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(5, minmax(0, 1fr));
+    gap: 5px;
 
-    &[disabled] {
-        cursor: not-allowed;
-
-        svg {
-            animation: animate 2s infinite;
-        }
-    }
-
-    &:hover {
-        filter: brightness(1.08);
-        transform: scale(1.1);
-    }
-}
-
-@media (max-width: 1300px) {
-
-    .container {
-        top: 10px;
-        //width: 100%;
-        max-width: 1300px;
-        //height: 5rem;
-        margin: 6rem;
-        //padding: 0 2rem;
-        //display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .grid {
-        width: 100%;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: repeat(5, minmax(0, 1fr));
-        gap: 4px;
-        justify-content: center;
-        align-items: center;
-
-        h2 {
-            color: var(--white);
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 0.5rem;
-        }
-    }
-
-    .game {
-        display: flex;
-
-        width: 290px;
-        height: 110px;
-        background: var(--gray-100);
-        padding: 1rem;
-    }
-
-
-    .dadosRounds {
-        width: 220px;
-        display: inline;
-        justify-content: space-between;
-        padding: 1px;
-    }
-
-    .roundGame {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        label {
-            margin-left: 1rem;
-            align-items: center;
-            justify-content: center;
-        }
-
-        input {
-            margin-left: 0.5rem;
-        }
-    }
-
-    .section {
-        align-items: center;
-        justify-content: center;
-        border-radius: 1;
-        border: 1px solid var(--white);
-        padding: 5px;
-    }
-
-    .buttonSaveRound {
-        max-width: 70px;
-        margin-right: 1rem;
-        background-color: var(--blue);
-        border: 0;
-        //padding: 0.7rem;
-        color: var(--white);
-        border-radius: 0.5rem;
-        transition: transform 0.8s;
-
-        &[disabled] {
-            cursor: not-allowed;
-
-            svg {
-                animation: animate 2s infinite;
-            }
-        }
-
-        &:hover {
-            filter: brightness(1.08);
-            transform: scale(1.1);
-        }
-    }
-}
-
-@media (max-width: 1150px) {
-
-    .container {
-        top: 10px;
-        //width: 100%;
-        max-width: 1150px;
-        //height: 5rem;
-        margin: 6rem;
-        //padding: 0 2rem;
-        //display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .grid {
-        width: 100%;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: repeat(5, minmax(0, 1fr));
-        gap: 4px;
-        justify-content: center;
-        align-items: center;
-
-        h2 {
-            color: var(--white);
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 0.5rem;
-        }
-    }
-
-    .game {
-        display: flex;
-
-        width: 270px;
-        height: 110px;
-        background: var(--gray-100);
-        padding: 1rem;
-    }
-
-
-    .dadosRounds {
-        width: 220px;
-        display: inline;
-        justify-content: space-between;
-        padding: 1px;
-    }
-
-    .roundGame {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        label {
-            margin-left: 1rem;
-            align-items: center;
-            justify-content: center;
-        }
-
-        input {
-            margin-left: 0.5rem;
-        }
-    }
-
-    .section {
-        align-items: center;
-        justify-content: center;
-        border-radius: 1;
-        border: 1px solid var(--white);
-        padding: 5px;
-    }
-
-    .buttonSaveRound {
-        max-width: 70px;
-        margin-right: 1rem;
-        background-color: var(--blue);
-        border: 0;
-        //padding: 0.7rem;
-        color: var(--white);
-        border-radius: 0.5rem;
-        transition: transform 0.8s;
-
-        &[disabled] {
-            cursor: not-allowed;
-
-            svg {
-                animation: animate 2s infinite;
-            }
-        }
-
-        &:hover {
-            filter: brightness(1.08);
-            transform: scale(1.1);
-        }
-    }
-}
-
-@media (max-width: 1000px) {
-
-    .container {
-        top: 10px;
-        max-width: 1000px;
-        margin: 6rem;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .grid {
-        width: 100%;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: repeat(5, minmax(0, 1fr));
-        gap: 4px;
-        justify-content: center;
-        align-items: center;
-
-        h2 {
-            color: var(--white);
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 0.5rem;
-        }
-    }
-
-    .game {
-        display: flex;
-
-        width: 220px;
-        height: 145px;
-        background: var(--gray-100);
-        padding: 1rem;
-    }
-
-    .dadosRounds {
-        width: 190px;
+    h2 {
         margin-top: 1rem;
-        display: inline;
-        justify-content: space-between;
-    }
-
-    .roundGame {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-
-        label {
-            align-items: center;
-            justify-content: center;
-        }
-    }
-
-    .section {
-        align-items: center;
-        justify-content: center;
-        border-radius: 1;
-        border: 1px solid var(--white);
-        padding: 5px;
-    }
-
-    .buttonSaveRound {
-        width: 70px;
-        //max-width: 50px;
-        background-color: var(--blue);
-        border: 0;
-        padding: 0.7rem;
         color: var(--white);
-        border-radius: 0.5rem;
-        transition: transform 0.8s;
-
-        &[disabled] {
-            cursor: not-allowed;
-
-            svg {
-                animation: animate 2s infinite;
-            }
-        }
-
-        &:hover {
-            filter: brightness(1.08);
-            transform: scale(1.1);
-        }
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
     }
 }
 
-@media (max-width: 800px) {
+.game {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    background: var(--gray-100);
+}
 
-    .container {
-
-        display: flex;
-        //flex-direction: row;
-        top: 10px;
-        max-width: 800px;
-        //margin-left: 11rem;
-        //margin: 6rem;
-        justify-content: center;
-        align-items: center;
-    }
+@media only screen and (max-width: 690px) {
 
     .grid {
-        width: 100%;
         display: grid;
+        padding: 1.5rem;
         grid-template-columns: 1fr;
-        //grid-template-rows: repeat(0, minmax(10, 1fr));
-        //gap: 4px;
-        justify-content: center;
-        align-items: center;
-
+        grid-template-rows: repeat(5, minmax(0, 1fr));
+        gap: 5px;
+    
         h2 {
+            margin-top: 1rem;
             color: var(--white);
             display: flex;
             flex-direction: row;
             justify-content: center;
             align-items: center;
-            margin-bottom: 0.5rem;
         }
     }
 
-    .game {
-        //margin-left: 0.5rem;
-        display: flex;
-        width: 100%;
-        height: 120px;
-        background: var(--gray-100);
-        padding: 1rem;
-    }
-
-    .dadosRounds {
-        width: 250px;
-        //margin-top: 1rem;
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .roundGame {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-
-        label {
-            align-items: center;
-            justify-content: center;
-        }
-    }
-
-    .section {
-        align-items: center;
-        justify-content: center;
-        border-radius: 1;
-        border: 1px solid var(--white);
-        padding: 5px;
-    }
-
-    .buttonSaveRound {
-        align-items: center;
-        justify-content: center;
-        //width: 70px;
-        //max-width: 50px;
-        background-color: var(--blue);
-        border: 0;
-        //padding: 0.7rem;
-        color: var(--white);
-        border-radius: 0.5rem;
-        transition: transform 0.8s;
-
-        &[disabled] {
-            cursor: not-allowed;
-
-            svg {
-                animation: animate 2s infinite;
-            }
-        }
-
-        &:hover {
-            filter: brightness(1.08);
-            transform: scale(1.1);
-        }
-    }
-
-    /*     .buttonMain {
-        align-items: center;
-        justify-content: center;
-        //padding: auto;
-    } */
 }
-
-/* @keyframes animate {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-} */

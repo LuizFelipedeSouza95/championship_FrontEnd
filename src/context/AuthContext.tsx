@@ -27,6 +27,7 @@ type SignUpProps = {
     name: string;
     email: string;
     password: string;
+    team: string;
 }
 
 type AuthProviderProps = {
@@ -62,9 +63,9 @@ export function AuthProvider({ children }: AuthProviderProps) {
                     email
                 })
             })
-            .catch(() => {
-                singOut();
-            })
+                .catch(() => {
+                    singOut();
+                })
 
         }
     })
@@ -121,7 +122,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
             const response = await api.post('/users', {
                 name: credentials.name,
                 email: credentials.email,
-                password: credentials.password
+                password: credentials.password,
+                teamName: credentials.team
             })
             toast.success('Conta criada com sucesso!', {
                 position: "top-right",

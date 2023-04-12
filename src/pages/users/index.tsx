@@ -1,42 +1,25 @@
-import { useState, FormEvent } from 'react';
+import { useState } from 'react';
 import Head from "next/head";
 import { Header } from '../../components/Header'
 import style from './style.module.scss';
-import { toast, Zoom } from 'react-toastify';
 import { setupAPIClient } from '@/src/services/api';
 import { canSSRAuth } from '@/src/utils/canSSRAuth';
-import { FiRefreshCcw } from 'react-icons/fi';
 
-type ClassificationProps = {
+
+type UserProps = {
     id: string;
     name: string;
     email: string;
-    classifications: {
-        id: string;
-        team_id: string;
-        team_name: string;
-        namePlayer: string;
-        J: number;
-        P: number;
-        V: number;
-        E: number;
-        D: number;
-        GP: number;
-        GC: number;
-        SG: number;
-        player_id: string;
-    }[];
-    /*     roundsHome: [];
-        roundVisiting: []; */
+    teamName: string;
 }
 
 interface HomeProps {
-    classification: ClassificationProps[];
+    users: UserProps[];
 }
 
-export default function Classification({ classification }: HomeProps) {
+export default function Users({ users }: HomeProps) {
 
-    const [classificationList, setClassificationrList] = useState(classification || [])
+    const [userList, setUserrList] = useState(users || [])
 
     return (
         <>
@@ -46,42 +29,39 @@ export default function Classification({ classification }: HomeProps) {
             </Head>
 
             <Header />
-            <body className={style.body}>
 
 
-                <main className={style.container}>
+
+            <main className={style.containerMain}>
+
+                <section className={style.container}>
 
                     <h1>Usuários</h1>
 
                     <div className={style.containerTable}>
-                        <table className={style.table} id="tableClassification">
+                        <table className={style.table} id="tableUser">
                             <thead className={style.titleTable}>
                                 <tr>
                                     <th className={style.titleTableCell}>User</th>
                                     <th className={style.titleTableCell}>Email</th>
                                     <th className={style.titleTableCell}>Team</th>
-                                    {/* <th className={style.titleTableCell}>Admin?</th> */}
-                                    {/* <th className={style.titleTableCell}>CreatedAt</th> */}
                                 </tr>
                             </thead>
                             <tbody className={style.tableBody}>
-                                {classificationList.map(item => (
+                                {userList.map(item => (
                                     <tr>
                                         <td className={style.body_td}>{item.name}</td>
                                         <td className={style.body_td}>{item.email}</td>
-                                        <td className={style.body_td}>
-                                            {item.classifications.map((classification, index) => (
-                                                <span key={index}>{classification.team_name}</span>
-                                            ))}
-                                        </td>
+                                        <td className={style.body_td}>{item.teamName}</td>
                                     </tr>
                                 ))}
                             </tbody>
                         </table>
                     </div>
+                </section>
 
-                </main>
-            </body>
+            </main>
+
 
         </>
     )
@@ -94,7 +74,7 @@ export const getServerSideProps = canSSRAuth(async (ctx: any) => {
 
     return {
         props: {
-            classification: response.data
+            users: response.data
         }
     }
 })

@@ -49,7 +49,7 @@ export default function Classification({ classification }: HomeProps) {
                         <table className={style.table} id="tableClassification">
                             <thead className={style.titleTable}>
                                 <tr>
-                                <th className={style.titleTableCell}>Posição</th>
+                                    <th className={style.titleTableCell}>Posição</th>
                                     <th className={style.titleTableCell}>Time</th>
                                     <th className={style.titleTableCell}>Jogador</th>
                                     <th className={style.titleTableCell}>P</th>

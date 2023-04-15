@@ -1,4 +1,8 @@
-import { GetServerSideProps,  GetServerSidePropsContext,  GetServerSidePropsResult } from "next";
+import {
+  GetServerSideProps,
+  GetServerSidePropsContext,
+  GetServerSidePropsResult,
+} from "next";
 import { parseCookies } from "nookies";
 
 export function canSSRGuest<P extends { [key: string]: any }>(

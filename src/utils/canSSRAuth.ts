@@ -1,4 +1,8 @@
-import { GetServerSideProps,  GetServerSidePropsContext,  GetServerSidePropsResult } from "next";
+import {
+  GetServerSideProps,
+  GetServerSidePropsContext,
+  GetServerSidePropsResult,
+} from "next";
 import { parseCookies, destroyCookie } from "nookies";
 import { AuthtokenError } from "../services/errors/authTokenError";
 
